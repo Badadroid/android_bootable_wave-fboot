@@ -1,0 +1,5 @@
+OutDir := Output
+ObjDir := Obj
+SrcDir := Source
+
+SrcMake := Source/Makefile
