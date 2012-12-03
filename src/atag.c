@@ -21,7 +21,7 @@
 */
 
 #include "atag.h"
-#include <string.h>
+#include "string.h"
 
 #define tag_next(t)     ((struct atag *)((unsigned long *)(t) + (t)->hdr.size))
 #define tag_size(type)  ((sizeof(struct atag_header) + sizeof(struct type)) >> 2)

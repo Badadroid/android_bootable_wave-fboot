@@ -19,8 +19,8 @@
  ;
  ;
 */
+#include "string.h"
 
-#include <string.h>
 #include "BL3.h"
 #include "crc32.h"
 

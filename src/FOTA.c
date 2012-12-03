@@ -19,8 +19,7 @@
  ;
  ;
 */
-#include <string.h>
-#include <stdarg.h>
+#include "string.h"
 #include "BL3.h"
 #include "atag.h"
 

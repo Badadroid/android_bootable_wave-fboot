@@ -13,17 +13,23 @@ AppObjects := 	FOTA.o \
             
 AppObjectsWithPath := $(patsubst %, $(ObjDir)/%, $(AppObjects))
 
+ifeq ($(SYS), LINUX)
+	DEFS := -DLINUX
+else
+	DEFS := -DWINDOWS
+endif
 #
 $(OutDir)/%.fota: $(AppObjectsWithPath) $(ObjDir)/BL3_%.o $(ObjDir)/RAW_%.o
 	$(LD) -T $*.lds $(AppObjectsWithPath) $(ObjDir)/RAW_$*.o $(ObjDir)/BL3_$*.o -o $(ObjDir)/$*.elf
 	$(OBJCOPY) -O binary $(ObjDir)/$*.elf $@
    
 $(ObjDir)/%.o: $(SrcDir)/%.c
-	$(CC) -c -Os $^ -o $@
+	$(CC) $(DEFS) -c -Os $^ -o $@
    
 $(ObjDir)/%.o: $(SrcDir)/%.s
-	$(AS) $^ -o $@
+	$(AS) $(DEFS) $^ -o $@
 
 clean:
-	$(RM) -f $(OutDir)/*.fota
-	$(RM) -f $(ObjDir)/*.elf
+	$(RM) $(call FixPath,$(OutDir)/*.fota)
+	$(RM) $(call FixPath,$(OutDir)/*.elf)
+	$(RM) $(call FixPath,$(OutDir)/*.o)

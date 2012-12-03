@@ -1,5 +1,5 @@
-OutDir := Output
-ObjDir := Obj
-SrcDir := Source
+OutDir := out
+ObjDir := obj
+SrcDir := src
 
-SrcMake := Source/Makefile
+SrcMake := src/Makefile

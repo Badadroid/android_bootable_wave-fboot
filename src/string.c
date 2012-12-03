@@ -1,4 +1,3 @@
-#include <string.h>
 /*
  *  linux/lib/string.c
  *
@@ -15,6 +14,9 @@
  * -  Added strsep() which will replace strtok() soon (because strsep() is
  *    reentrant and should be faster). Use only strsep() in new code, please.
  */
+ 
+#include "string.h"
+
 #if 0
 int strnicmp(const char *s1, const char *s2, size_t len)
 {
