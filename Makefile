@@ -1,23 +1,14 @@
 include Make_dirs
 
-ifdef SystemRoot
-	RM := del /Q
-	FixPath = $(subst /,\,$1)
-	SYS := WIN
-else
-	ifeq ($(shell uname), Linux)
-		RM := rm -f
-		FixPath = $1
-		SYS := LINUX
-	endif
-endif
+ARMTK := c:/bada/2.0.6/Tools/Toolchains/ARM
 
-CC := $(CROSS_COMPILE)gcc
-AS := $(CROSS_COMPILE)as
-LD := $(CROSS_COMPILE)ld
-OBJCOPY := $(CROSS_COMPILE)objcopy
+CC := $(ARMTK)/bin/arm-bada-eabi-gcc.exe
+AS := $(ARMTK)/bin/arm-bada-eabi-as.exe
+LD := $(ARMTK)/bin/arm-bada-eabi-ld.exe
+RM := $(ARMTK)/bin/rm.exe
+OBJCOPY := $(ARMTK)/bin/arm-bada-eabi-objcopy.exe
 
-Applications := FBOOT_S8500_b1x FBOOT_S8530_b1x FBOOT_S8500_b2x FBOOT_S8530_b2x
+Applications := FBOOT_S8500_b2x FBOOT_S8530_b2x
 OutputFiles := $(patsubst %, $(OutDir)/%.fota, $(Applications))
 
 application: $(OutputFiles)
