@@ -1,7 +1,7 @@
 /*
  ; This file is part of Badadroid project.
  ;
- ; Copyright (C) 2012 Rebellos, mijoma, b_kubica
+ ; Copyright (C) 2013 ihavenick, Rebellos, mijoma, b_kubica
  ;
  ;
  ; Badadroid is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 
 int main(runMode_t mode)
 {
-   void* kernelImage = L"/g/zImage";
+   void* kernelImage = L"/e/zImage";
    char* cmdlnRM = "bootmode=2 loglevel=4";
    char* cmdln = "loglevel=4";
    
@@ -44,6 +44,7 @@ int main(runMode_t mode)
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("| Author:     mijoma         |");
    disp_FOTA_Printf("| Credits to: Rebellos       |");
+   disp_FOTA_Printf("| Credits to: ihavenick      |");
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("");
       
@@ -51,6 +52,7 @@ int main(runMode_t mode)
 
    __PfsNandInit();
    __PfsMassInit();
+   MemoryCardMount();
    tfs4_stat(kernelImage, &filestat);
    kernelSize = filestat.st_size;
    if ((fd=tfs4_open(kernelImage, 4)) >= 0)
