@@ -8,7 +8,6 @@ AppObjects := 	FOTA.o \
                header.o \
                crc32.o \
                sha1.o \
-               atag.o \
 
             
 AppObjectsWithPath := $(patsubst %, $(ObjDir)/%, $(AppObjects))
