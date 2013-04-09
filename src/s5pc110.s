@@ -35,6 +35,8 @@
    .type _System_DisableFIQ, %function
    .global DisableMmuCache
    .type DisableMmuCache, %function
+   .global oldbootstyle
+   .type oldbootstyle, %function
 
 DisableMmuCache:
    MCR	p15, 0, R0,c1,c0
@@ -69,4 +71,60 @@ _System_DisableFIQ:
 	ORR	R0, R0, #0x40
 	MSR	CPSR_cxsf, R0
 	BX	LR
-   
+oldbootstyle:
+   LDR   R0, =0x20000100
+   MOV   R1, #0x00
+   MOV   R2, #512
+   BL    rebell_fillmem 
+   LDR   R2, =0x20000100
+   MOV   R0, #2
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   LDR   R0, =0x54410001
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   MOV   R0, #4
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   LDR   R0, =0x54410006
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   MOV   R0, #3
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   LDR   R0, =0x54410007
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   MOV   R0, #0x30
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+
+   BL    rebell_strlen
+   ADD   R0, R0, #1
+   MOV   R5, R0
+   MOV   R0, R5
+   ADD   R0, R0, #0xD
+   MOV   R0, R0,LSR#2
+   STR   R0, [R2] 
+   ADD   R2, R2, #4
+   LDR   R0, =0x54410009
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   MOV   R6, R2
+
+   MOV   R1, R2          
+   MOV   R2, R5    
+   BL    rebell_memcpy
+   MOV   R2, R6
+   ADD   R2, R2, R5, LSL#2 
+   MOV   R0, #0
+   STR   R0, [R2]
+   ADD   R2, R2, #4
+   MOV   R0, #0 
+   STR   R0, [R2]

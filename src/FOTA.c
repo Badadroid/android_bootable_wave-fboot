@@ -66,6 +66,7 @@ int main(runMode_t mode)
    DisableMmuCache(mmuctrl);
    disp_FOTA_Printf("Disabled MMU");
    _CoDisableMmu();
+   oldbootstyle();
    
    //DRV_Modem_BootingStart
    
@@ -94,8 +95,8 @@ int main(runMode_t mode)
    disp_FOTA_Printf("it must start now");
    
    //loop forever
-   //while(1);
-   //disp_FOTA_Printf("sh*t loop time");
+   while(1);
+   disp_FOTA_Printf("sh*t loop time");
    return 0;
 
 }
