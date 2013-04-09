@@ -21,7 +21,7 @@
 */
 #include "string.h"
 #include "BL3.h"
-
+#include "atag.h"
 
 int main(runMode_t mode)
 {
@@ -66,19 +66,19 @@ int main(runMode_t mode)
    DisableMmuCache(mmuctrl);
    disp_FOTA_Printf("Disabled MMU");
    _CoDisableMmu();
-   oldbootstyle();
+   
    
    //DRV_Modem_BootingStart
    
-   //setup_core_tag(ATAG_buf);
-   //disp_FOTA_Printf("setup atag");
-   //setup_serial_tag(0x123, 0x456);
-  // setup_rev_tag('0');
-   //if (mode == rm_FOTA_RECOVERY)
-     // setup_cmdline_tag(cmdlnRM);
-   //else
-      //setup_cmdline_tag(cmdln);
-  // setup_end_tag();
+   setup_core_tag(ATAG_buf);
+   disp_FOTA_Printf("setup atag");
+   setup_serial_tag(0x123, 0x456);
+   setup_rev_tag('0');
+   if (mode == rm_FOTA_RECOVERY)
+      setup_cmdline_tag(cmdlnRM);
+   else
+      setup_cmdline_tag(cmdln);
+   setup_end_tag();
    
    //copy kernel to the right position
    memcpy(&KERNEL_START, &KERNEL_BUF, kernelSize);

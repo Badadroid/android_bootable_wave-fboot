@@ -23,7 +23,6 @@ void _CoDisableDCache(void);
 void _System_DisableVIC(void);
 void _System_DisableIRQ(void);
 void _System_DisableFIQ(void);
-void oldbootstyle(void);
 
 
 #endif /* S5PC110_H_ */
