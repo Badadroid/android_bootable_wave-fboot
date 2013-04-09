@@ -1,4 +1,8 @@
-include Make_dirs
+OutDir := out
+ObjDir := out
+SrcDir := src
+
+SrcMake := src/Makefile
 
 ifdef SystemRoot
 	RM := del /Q

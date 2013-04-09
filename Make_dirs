@@ -1,5 +1,0 @@
-OutDir := out
-ObjDir := obj
-SrcDir := src
-
-SrcMake := src/Makefile

@@ -33,8 +33,8 @@ MEMORY
 }
 SECTIONS
 {
-  .header 0x43800000: { obj/header.o (.text) } > fota
-  .footer 0x43A80000: {obj/footer.o (.text)}
+  .header 0x43800000: {out/header.o (.text)} > fota
+  .footer 0x43A80000: {out/footer.o (.text)}
    __fota_start = ADDR(.header);
   
   

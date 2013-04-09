@@ -20,7 +20,7 @@ else
 endif
 #
 $(OutDir)/%.fota: $(AppObjectsWithPath) $(ObjDir)/BL3_%.o $(ObjDir)/RAW_%.o
-	$(LD) -T $*.lds $(AppObjectsWithPath) $(ObjDir)/RAW_$*.o $(ObjDir)/BL3_$*.o -o $(ObjDir)/$*.elf
+	$(LD) -T $*.lds -Map=$(OutDir)/$*.map $(AppObjectsWithPath) $(ObjDir)/RAW_$*.o $(ObjDir)/BL3_$*.o -o $(ObjDir)/$*.elf
 	$(OBJCOPY) -O binary $(ObjDir)/$*.elf $@
    
 $(ObjDir)/%.o: $(SrcDir)/%.c
