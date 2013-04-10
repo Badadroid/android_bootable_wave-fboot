@@ -25,7 +25,7 @@
 
 #define tag_next(t)     ((struct atag *)((unsigned long *)(t) + (t)->hdr.size))
 #define tag_size(type)  ((sizeof(struct atag_header) + sizeof(struct type)) >> 2)
-static struct atag *params; /* used to point at the current tag */
+struct atag *params; /* used to point at the current tag */
 
 void setup_core_tag(void * address)
 {
