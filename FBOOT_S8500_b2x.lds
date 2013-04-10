@@ -25,7 +25,7 @@ ENTRY(main)
 MODEL = 0x30303538;
 FOTA_NAND_START = 0x03300000;
 BL3_DRAM_START = 0x42080000;
-KERNEL_BUF = 0x44000000;
+KERNEL_BUF = 0x44400000;
 KERNEL_START = 0x22000000;
 MEMORY 
 {
@@ -33,8 +33,8 @@ MEMORY
 }
 SECTIONS
 {
-  .header 0x43200000: { obj/header.o (.text) } > fota
-  .footer 0x43480000: {obj/footer.o (.text)}
+  .header 0x43200000: {out/header.o (.text)} > fota
+  .footer 0x43480000: {out/footer.o (.text)}
    __fota_start = ADDR(.header);
   
   
