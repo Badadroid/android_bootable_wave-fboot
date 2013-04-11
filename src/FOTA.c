@@ -25,7 +25,7 @@
 
 int main(runMode_t mode)
 {
-   void* kernelImage = L"/e/zImage";
+   void* kernelImage = L"/g/zImage";
    char* cmdlnRM = "bootmode=2 loglevel=4";
    char* cmdln = "loglevel=4";
    
@@ -43,7 +43,8 @@ int main(runMode_t mode)
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("| Author:     mijoma         |");
    disp_FOTA_Printf("| Credits to: Rebellos       |");
-   disp_FOTA_Printf("| Credits to: ihavenick      |");
+   disp_FOTA_Printf("|             ihavenick      |");
+   disp_FOTA_Printf("|             Tigrouzen      |");
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("");
       
@@ -61,7 +62,10 @@ int main(runMode_t mode)
       disp_FOTA_Printf("Readed kernel");
       tfs4_close(fd);
    }   
-   
+   if (kernelSize == 0)
+   {
+   disp_FOTA_Printf("Kernel Not Found");
+   }
 
    DisableMmuCache(mmuctrl);
    disp_FOTA_Printf("Disabled MMU");
