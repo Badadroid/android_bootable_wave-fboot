@@ -44,16 +44,20 @@ int main(runMode_t mode)
    disp_FOTA_Printf("| Author:     mijoma         |");
    disp_FOTA_Printf("| Credits to: Rebellos       |");
    disp_FOTA_Printf("|             ihavenick      |");
-   disp_FOTA_Printf("|             Tigrouzen      |");
+   disp_FOTA_Printf("|                            |");
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("");
+   if (kernelSize <= 0)
+   {
+   disp_FOTA_Printf("Kernel is not loaded this time");
+   }
       
    //.... Your code here...
 
    __PfsNandInit();
    __PfsMassInit();
    //MemoryCardMount();
-   disp_FOTA_Printf("Mounted Sd Card");
+   disp_FOTA_Printf("Mounted Partitions");
    tfs4_stat(kernelImage, &filestat);
    kernelSize = filestat.st_size;
    if ((fd=tfs4_open(kernelImage, 4)) >= 0)
@@ -62,11 +66,10 @@ int main(runMode_t mode)
       disp_FOTA_Printf("Readed kernel");
       tfs4_close(fd);
    }   
-   if (kernelSize == 0)
+   if (kernelSize <= 0)
    {
    disp_FOTA_Printf("Kernel Not Found");
    }
-
    DisableMmuCache(mmuctrl);
    disp_FOTA_Printf("Disabled MMU");
    _CoDisableMmu();
@@ -93,7 +96,8 @@ int main(runMode_t mode)
    _System_DisableVIC();
    _System_DisableIRQ();
    _System_DisableFIQ();
-   
+   disp_FOTA_Printf("its must boot if you dont see");
+   disp_FOTA_Printf("any message later this is stucked");
    kernel = (fun_t)&KERNEL_START;
    kernel(0, 0x891, ATAG_buf);
    disp_FOTA_Printf("it must start now");

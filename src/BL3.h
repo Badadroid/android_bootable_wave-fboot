@@ -42,6 +42,7 @@ enum {
    i_OemSysGetSystemInfo,
    i___PfsNandInit,
    i___PfsMassInit,
+   //i_MemoryCardMount,
    i_tfs4_stat,
    i_tfs4_open,
    i_tfs4_read,
@@ -67,6 +68,7 @@ extern unsigned char* RAW_BL3;
 #define MemMMUCacheEnable           ptr_table[i_MemMMUCacheEnable]
 #define __PfsNandInit               ptr_table[i___PfsNandInit]
 #define __PfsMassInit               ptr_table[i___PfsMassInit]
+//#define MemoryCardMount             ptr_table[i_MemoryCardMount]
 #define tfs4_stat                   ptr_table[i_tfs4_stat]
 #define tfs4_open                   ptr_table[i_tfs4_open]
 #define tfs4_read                   ptr_table[i_tfs4_read]
