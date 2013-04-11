@@ -35,8 +35,6 @@
    .type _System_DisableFIQ, %function
    .global DisableMmuCache
    .type DisableMmuCache, %function
-   .global oldbootstyle
-   .type oldbootstyle, %function
 
 DisableMmuCache:
    MCR	p15, 0, R0,c1,c0
@@ -71,3 +69,4 @@ _System_DisableFIQ:
 	ORR	R0, R0, #0x40
 	MSR	CPSR_cxsf, R0
 	BX	LR
+   

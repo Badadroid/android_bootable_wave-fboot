@@ -8,7 +8,7 @@ LD := $(ARMTK)/bin/arm-bada-eabi-ld.exe
 RM := $(ARMTK)/bin/rm.exe
 OBJCOPY := $(ARMTK)/bin/arm-bada-eabi-objcopy.exe
 
-Applications := FBOOT_S8500_b2x FBOOT_S8530_b2x
+Applications := FBOOT_S8500_b1x FBOOT_S8530_b1x FBOOT_S8500_b2x FBOOT_S8530_b2x
 OutputFiles := $(patsubst %, $(OutDir)/%.fota, $(Applications))
 
 application: $(OutputFiles)
