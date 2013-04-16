@@ -42,7 +42,8 @@ enum {
    i_OemSysGetSystemInfo,
    i___PfsNandInit,
    i___PfsMassInit,
-   //i_MemoryCardMount,
+   i_MemoryCardMount,
+   i_DRV_Modem_BootingStart,
    i_tfs4_stat,
    i_tfs4_open,
    i_tfs4_read,
@@ -68,7 +69,7 @@ extern unsigned char* RAW_BL3;
 #define MemMMUCacheEnable           ptr_table[i_MemMMUCacheEnable]
 #define __PfsNandInit               ptr_table[i___PfsNandInit]
 #define __PfsMassInit               ptr_table[i___PfsMassInit]
-//#define MemoryCardMount             ptr_table[i_MemoryCardMount]
+#define MemoryCardMount             ptr_table[i_MemoryCardMount]
 #define tfs4_stat                   ptr_table[i_tfs4_stat]
 #define tfs4_open                   ptr_table[i_tfs4_open]
 #define tfs4_read                   ptr_table[i_tfs4_read]
@@ -76,7 +77,7 @@ extern unsigned char* RAW_BL3;
 #define disp_FOTA_Init              ptr_table[i_disp_FOTA_Init]
 #define disp_FOTA_Printf            ptr_table[i_disp_FOTA_Printf]
 #define OemSysGetSystemInfo         ptr_table[i_OemSysGetSystemInfo]
-
+#define DRV_Modem_BootingStart             ptr_table[i_DRV_Modem_BootingStart]
 
 
 

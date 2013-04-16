@@ -89,8 +89,8 @@ runMode_t checkFBOOT( void )
    KEYIFCOL = ((~(1 << 2) & (0xFF)) << 8); //COL 2
    for(i = 0; i < 10000; i++); //short delay
    if((1 << 0) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
-	   return rm_BL3;
-   return rm_FOTA_RUN;
+	   return rm_FOTA_RUN;
+   return rm_FOTA_RECOVERY;
 }
 
 void BL3_Shadowing( void )

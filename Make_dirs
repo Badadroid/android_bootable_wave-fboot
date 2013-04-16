@@ -1,4 +1,4 @@
-OutDir := C:\Users\Prince\Documents\GitHub\android_bootable_wave-fboot/out
+OutDir := out
 ObjDir := obj
 SrcDir := src
 

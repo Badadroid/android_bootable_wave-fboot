@@ -1,7 +1,7 @@
 /*
  ; This file is part of Badadroid project.
  ;
- ; Copyright (C) 2013 Rebellos, mijoma, b_kubica, ihavenick
+ ; Copyright (C) 2013 ihavenick, Rebellos, mijoma, b_kubica
  ;
  ;
  ; Badadroid is free software: you can redistribute it and/or modify
@@ -43,7 +43,9 @@ int main(runMode_t mode)
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("|      Booting Android       |");
    disp_FOTA_Printf("*----------------------------*");
-//there was a ascii art forgatted it on other pc
+   disp_FOTA_Printf("| Author:     mijoma         |");
+   disp_FOTA_Printf("| Credits to: Rebellos       |");
+   disp_FOTA_Printf("|             ihavenick      |");
    disp_FOTA_Printf("|                            |");
    disp_FOTA_Printf("*----------------------------*");
    disp_FOTA_Printf("");
