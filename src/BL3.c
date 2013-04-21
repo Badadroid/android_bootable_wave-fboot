@@ -83,6 +83,16 @@ int getBL3ptrs( void )
    return 0;
 }
 
+runMode_t checkBIGMEM( void )
+{
+	int i;
+   KEYIFCOL = ((~(1 << 1) & (0xFF)) << 8); //COL 2
+   for(i = 0; i < 10000; i++); //short delay
+   if((1 << 2) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
+	   return rm_FOTA_BIGMEM;
+   checkFBOOT();
+}
+
 runMode_t checkFBOOT( void )
 {
 	int i;
