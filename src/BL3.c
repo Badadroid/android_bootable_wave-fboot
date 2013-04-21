@@ -92,10 +92,15 @@ runMode_t checkFBOOT( void )
    if((1 << 0) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
 	   return rm_FOTA_RUN;
    int c;
-   KEYIFCOL = ((~(1 << 1) & (0xFF)) << 8); //COL 2
+   KEYIFCOL = ((~(1 << 1) & (0xFF)) << 8); //COL 1
    for(c = 0; c < 10000; c++); //short delay
-   if((1 << 2) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
+   if((1 << 2) & (KEYIFROW & 0xFF)) //COL 1 & ROW 2 - Volume up key
 	   return rm_FOTA_BIGMEM;
+   int b;
+   KEYIFCOL = ((~(1 << 0) & (0xFF)) << 8); //COL 0
+   for(b = 0; b < 10000; b++); //short delay
+   if((1 << 2) & (KEYIFROW & 0xFF)) //COL 0 & ROW 2 - Camera key
+	   return rm_FOTA_FPFK;	   //format partitions put zimage to /boot
    return rm_FOTA_RECOVERY;
 }
 
