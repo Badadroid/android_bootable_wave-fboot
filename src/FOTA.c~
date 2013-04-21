@@ -27,7 +27,6 @@ int main(runMode_t mode)
 {
    void* kernelImage = L"/e/zImage";
    char* cmdlnRM = "bootmode=2 loglevel=4";
-   char* cmdlnBG = "bootmode=10 loglevel=4";
    char* cmdln = "loglevel=4";
    
    unsigned char ATAG_buf[512]={0};
@@ -74,16 +73,6 @@ int main(runMode_t mode)
    setup_core_tag(ATAG_buf);
    setup_serial_tag(0x123, 0x456);
    setup_rev_tag('0');
-   if(mode == rm_BIGMEM)    
-{   
-       setup_cmdline_tag(cmdlnBG); 
-       disp_FOTA_Printf("Bigmem mode");	
-       DRV_Modem_BootingStart();
-}
-   if(mode == rm_FPFK)    
-{   
-       disp_FOTA_Printf("Under Maintise :D");	
-}
    if(mode == rm_FOTA_RECOVERY)    
 {   
        setup_cmdline_tag(cmdlnRM); 
