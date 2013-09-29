@@ -91,6 +91,12 @@ runMode_t checkFBOOT( void )
    if((1 << 0) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
 	   return rm_BL3;
    return rm_FOTA_RUN;
+   //COL 0 + ROW 0 = HOME KEY
+   //COL 0 + ROW 1 = CAM HALF KEY
+   //COL 0 + ROW 2 = CAM FULL KEY
+   //COL 1 + ROW 0 = CALL KEY
+   //COL 1 + ROW 1 = VOLDOWN KEY
+   //COL 1 + ROW 2 = VOLUP KEY
 }
 
 void BL3_Shadowing( void )
