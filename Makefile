@@ -21,7 +21,7 @@ AS := $(CROSS_COMPILE)as
 LD := $(CROSS_COMPILE)ld
 OBJCOPY := $(CROSS_COMPILE)objcopy
 
-Applications := FBOOT_S8500_b1x FBOOT_S8530_b1x FBOOT_S8500_b2x FBOOT_S8530_b2x
+Applications := FBOOT_S8500_b2x FBOOT_S8530_b2x
 OutputFiles := $(patsubst %, $(OutDir)/%.fota, $(Applications))
 
 application: $(OutputFiles)
