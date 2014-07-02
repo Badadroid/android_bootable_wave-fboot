@@ -60,6 +60,7 @@ extern unsigned char gMMUL1PageTable[0x4000];
 unsigned char BL3_DRAM_START;
 unsigned char KERNEL_BUF;
 unsigned char KERNEL_START;
+unsigned char ATAG_MODEL;
 extern fun_t kernel;
 
 extern unsigned char* RAW_BL3;
