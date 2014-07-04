@@ -74,9 +74,15 @@ int main(runMode_t mode)
    setup_serial_tag(0x123, 0x456);
    setup_rev_tag('0');
    if (mode == rm_FOTA_RECOVERY)
+   {
       setup_cmdline_tag(cmdlnRM);
+      disp_FOTA_Printf("     Boot in Recovery Mode   ");
+   }
    else
+   {
       setup_cmdline_tag(cmdln);
+      disp_FOTA_Printf("     Boot in Normal Mode     ");
+   }
    setup_end_tag();
 
    //copy kernel to the right position

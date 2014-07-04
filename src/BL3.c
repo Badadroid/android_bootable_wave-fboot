@@ -27,33 +27,32 @@
 //quick and dirty
 #define BL3_REGION_LEN   0x0017FF80
 
-
-fun_t ptr_table[i_endMarker];                
+fun_t ptr_table[i_endMarker];
 unsigned char gMMUL1PageTable[0x4000];
-                
+
 
 int getBL3ptrs( void )
-{   
+{
    unsigned char *ptr = &BL3_DRAM_START, *fun;
    unsigned long crc;
    int i,found = 0;
-   
+
    fun = 0;
 
    while(ptr < (&BL3_DRAM_START + BL3_REGION_LEN))
    {
       if ( (fun == 0) && (ptr[3] == 0xe9))
-      {   
+      {
          fun = ptr;
       }
-            
+
       //the following code assumes ARM32 mode - the original bootloaders used it so far
-      if ( (fun != 0) && 
+      if ( (fun != 0) &&
            (
             ( ptr[3] == 0xe8) || //if we have multiple load (cleaning the stack) //LDMFD {...
             ( ((ptr[3]&0xFE) == 0xe4) && (ptr[2]&0x10) && ((ptr[1]&0xF0) == 0xF0) ) || //ldr pc,...
             ( (ptr[3] == 0xe1) && (ptr[2] == 0x2f) && (ptr[1] == 0xff) && (ptr[0] == 0x1E) ) //bx lr
-           ) 
+           )
           )
       {
          crc = crc32(fun, (ptr-fun) + 4, 0);  //include also the function return
@@ -79,18 +78,23 @@ int getBL3ptrs( void )
       if (found == i_endMarker)
          return 1;
    }
-   
    return 0;
 }
 
 runMode_t checkFBOOT( void )
 {
-	int i;
+
+   KEYIFCOL = ((~(1 << 1) & (0xFF)) << 8); //COL 1
+   if((1 << 2) & (KEYIFROW & 0xFF)) //CALL KEY
+       return rm_FOTA_RUN;
+
+   if((1 << 1) & (KEYIFROW & 0xFF))
+       return rm_FOTA_RECOVERY; //VOLUP KEY
+
    KEYIFCOL = ((~(1 << 2) & (0xFF)) << 8); //COL 2
-   for(i = 0; i < 10000; i++); //short delay
-   if((1 << 0) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
+   if((1 << 0) & (KEYIFROW & 0xFF)) //END KEY
 	   return rm_BL3;
-   return rm_FOTA_RUN;
+
    //COL 0 + ROW 0 = HOME KEY
    //COL 0 + ROW 1 = CAM HALF KEY
    //COL 0 + ROW 2 = CAM FULL KEY
@@ -103,6 +107,5 @@ void BL3_Shadowing( void )
 {
       //we simply copy the contents of the known bootloader to the right place and execute it from there
       //our shadowed bootloader may be already patched to include some other features
-      memcpy(&BL3_DRAM_START, &RAW_BL3, BL3_REGION_LEN); 
+      memcpy(&BL3_DRAM_START, &RAW_BL3, BL3_REGION_LEN);
 }
-
