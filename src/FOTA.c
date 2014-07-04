@@ -68,7 +68,7 @@ int main(runMode_t mode)
    DisableMmuCache(mmuctrl);
    _CoDisableMmu();
 
-   //DRV_Modem_BootingStart
+   DRV_Modem_BootingStart();
 
    setup_core_tag(ATAG_buf);
    setup_serial_tag(0x123, 0x456);

@@ -47,6 +47,7 @@ enum {
    i_tfs4_read,
    i_tfs4_close,
    i_MemoryCardMount,
+   i_DRV_Modem_BootingStart,
 
    //do not add below this line
    i_endMarker
@@ -74,6 +75,7 @@ extern unsigned char* RAW_BL3;
 #define disp_FOTA_Printf            ptr_table[i_disp_FOTA_Printf]
 #define OemSysGetSystemInfo         ptr_table[i_OemSysGetSystemInfo]
 #define MemoryCardMount             ptr_table[i_MemoryCardMount]
+#define DRV_Modem_BootingStart      ptr_table[i_DRV_Modem_BootingStart]
 
 #define KEY_CALL 2
 #define KEY_CAM1 3
