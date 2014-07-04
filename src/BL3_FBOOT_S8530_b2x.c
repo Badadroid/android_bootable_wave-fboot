@@ -1,9 +1,9 @@
 #include "BL3.h"
 
 unsigned long c_MemMMUCacheEnable[] = { 0xaab9f874, 0 };
-unsigned long c_disp_FOTA_Init[] = { 0xb3012305, 0 };
-unsigned long c_disp_FOTA_Printf[] = { 0xacaeca9d, 0 };
-unsigned long c_OemSysGetSystemInfo[] = { 0x697bddcf, 0 };
+unsigned long c_disp_FOTA_Init[] = { 0x1e2e7815, 0 };
+unsigned long c_disp_FOTA_Printf[] = { 0x2f35cab2, 0 };
+unsigned long c_OemSysGetSystemInfo[] = { 0x745ec423, 0 };
 unsigned long c___PfsNandInit[] = { 0xa5fef2be, 0 };
 unsigned long c___PfsMassInit[] = { 0x24428179, 0 };
 unsigned long c_tfs4_stat[] = { 0x603fe251, 0 };
