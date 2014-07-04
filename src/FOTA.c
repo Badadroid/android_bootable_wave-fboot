@@ -25,7 +25,7 @@
 
 int main(runMode_t mode)
 {
-   void* kernelImage = L"/e/zImage"; // g - internal sd card, e - external sd card
+   void* kernelImage = L"/e/boot.img"; // g - internal sd card, e - external sd card
    char* cmdlnRM = "bootmode=2 loglevel=4";
    char* cmdln = "loglevel=4";
 
