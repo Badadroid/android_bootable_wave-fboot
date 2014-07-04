@@ -44,6 +44,16 @@ int main(runMode_t mode)
    disp_FOTA_Printf("| Author:     mijoma         |");
    disp_FOTA_Printf("| Credits to: Rebellos       |");
    disp_FOTA_Printf("*----------------------------*");
+   disp_FOTA_Printf("                              ");
+   disp_FOTA_Printf(" __      __                   ");
+   disp_FOTA_Printf("/  \\    /  \\____ ___  __ ____ ");
+   disp_FOTA_Printf("\\   \\__/   |__  \\\\  \\/ // __ \\");
+   disp_FOTA_Printf(" \\        / / __ \\\\   / \\ ___/");
+   disp_FOTA_Printf("  \\__/\\__/ (_____/ \\_/   \\___");
+   disp_FOTA_Printf("                              ");
+   disp_FOTA_Printf("   ,(   ,(   ,(   ,(   ,(  ,( ");
+   disp_FOTA_Printf(" `-   `-   `-   `-   `-   `-  ");
+   disp_FOTA_Printf("                              ");
    disp_FOTA_Printf("");
 
    //.... Your code here...
