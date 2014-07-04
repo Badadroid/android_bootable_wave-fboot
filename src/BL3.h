@@ -7,7 +7,7 @@
 #define fptr(...) __VA_ARGS__
 typedef int (*fun_t)(fptr()) ;
 
-typedef enum 
+typedef enum
 {
    rm_BL3,
    rm_FOTA_RUN,
@@ -31,7 +31,7 @@ typedef struct
    unsigned int d2;
    unsigned int d3;
    unsigned int d4;
-   unsigned int d5;   
+   unsigned int d5;
    unsigned int d6;
 } t_stat;
 
@@ -46,8 +46,8 @@ enum {
    i_tfs4_open,
    i_tfs4_read,
    i_tfs4_close,
-   
-   
+   i_MemoryCardMount,
+
    //do not add below this line
    i_endMarker
 };
@@ -63,7 +63,6 @@ extern fun_t kernel;
 
 extern unsigned char* RAW_BL3;
 
-
 #define MemMMUCacheEnable           ptr_table[i_MemMMUCacheEnable]
 #define __PfsNandInit               ptr_table[i___PfsNandInit]
 #define __PfsMassInit               ptr_table[i___PfsMassInit]
@@ -74,10 +73,7 @@ extern unsigned char* RAW_BL3;
 #define disp_FOTA_Init              ptr_table[i_disp_FOTA_Init]
 #define disp_FOTA_Printf            ptr_table[i_disp_FOTA_Printf]
 #define OemSysGetSystemInfo         ptr_table[i_OemSysGetSystemInfo]
-
-
-
-
+#define MemoryCardMount             ptr_table[i_MemoryCardMount]
 
 #define KEY_CALL 2
 #define KEY_CAM1 3
