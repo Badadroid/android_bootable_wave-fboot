@@ -24,7 +24,7 @@ $(OutDir)/%.fota: $(AppObjectsWithPath) $(ObjDir)/BL3_%.o $(ObjDir)/RAW_%.o
 	$(OBJCOPY) -O binary $(ObjDir)/$*.elf $@
    
 $(ObjDir)/%.o: $(SrcDir)/%.c
-	$(CC) $(DEFS) -c -fexec-charset=ASCII --disable-wchar_t -Os $^ -o $@
+	$(CC) $(DEFS) -c -fexec-charset=ASCII -Os $^ -o $@
    
 $(ObjDir)/%.o: $(SrcDir)/%.s
 	$(AS) $(DEFS) $^ -o $@
