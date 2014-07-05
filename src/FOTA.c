@@ -63,7 +63,8 @@ int main(runMode_t mode)
 
    tfs4_stat(kernelImage, &filestat);
    kernelSize = filestat.st_size;
-   if ((fd=tfs4_open(kernelImage, 4)) >= 0)
+
+   if ((kernelSize > 0) && ((fd=tfs4_open(kernelImage, 4)) >= 0))
    {
       tfs4_read(fd, &KERNEL_BUF, kernelSize);
       tfs4_close(fd);
@@ -113,7 +114,7 @@ int main(runMode_t mode)
    {
       disp_FOTA_Printf("                              ");
       disp_FOTA_Printf("            ERROR:            ");
-      disp_FOTA_Printf("      boot.img not found      ");
+      disp_FOTA_Printf(" boot.img not found or broken ");
       disp_FOTA_Printf("                              ");
       disp_FOTA_Printf("   Please re-copy boot.img    ");
       disp_FOTA_Printf("     to external SD card      ");
