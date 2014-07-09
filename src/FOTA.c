@@ -39,7 +39,8 @@ int main(runMode_t mode)
 
    int mmuctrl = MemMMUCacheEnable(gMMUL1PageTable, 1);
 
-   disp_FOTA_Init();
+   //disp_FOTA_Init();    - white screen
+   disp_Normal_Init();//  - black screen
    disp_FOTA_Printf("                              ");
    disp_FOTA_Printf("                              ");
    disp_FOTA_Printf("       XDA DEVELOPERS         ");
