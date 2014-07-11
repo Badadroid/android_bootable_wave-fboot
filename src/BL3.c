@@ -81,28 +81,27 @@ int getBL3ptrs( void )
    return 0;
 }
 
-runMode_t checkFBOOT( void )
+int is_key_pressed(int col, int row)
 {
+   int i;
 
-   KEYIFCOL = ((~(1 << 1) & (0xFF)) << 8); //COL 1
-   if((1 << 2) & (KEYIFROW & 0xFF)) //CALL KEY
-       return rm_FOTA_RUN;
-
-   if((1 << 1) & (KEYIFROW & 0xFF))
-       return rm_FOTA_RECOVERY; //VOLUP KEY
-
-   KEYIFCOL = ((~(1 << 2) & (0xFF)) << 8); //COL 2
-   if((1 << 0) & (KEYIFROW & 0xFF)) //END KEY
-	   return rm_BL3;
-
-   //COL 0 + ROW 0 = HOME KEY
-   //COL 0 + ROW 1 = CAM HALF KEY
-   //COL 0 + ROW 2 = CAM FULL KEY
-   //COL 1 + ROW 0 = CALL KEY
-   //COL 1 + ROW 1 = VOLDOWN KEY
-   //COL 1 + ROW 2 = VOLUP KEY
+   KEYIFCOL = ((~(1 << col) & (0xFF)) << 8);
+   for(i = 0; i < 10000; i++); //short delay
+   if((~KEYIFROW >> row) & 1)
+      return 1;
+   return 0;
 }
 
+runMode_t checkFBOOT( void )
+{
+    if(is_key_pressed(1, 2)) //VOLUP KEY
+        return rm_FOTA_RECOVERY; // start in Recovery Mode
+
+    if(is_key_pressed(2, 0)) //CALL KEY
+        return rm_BL3; // we can use it for Bada offline chanrger
+    return rm_FOTA_RUN; // start in android by Default
+
+}
 void BL3_Shadowing( void )
 {
       //we simply copy the contents of the known bootloader to the right place and execute it from there
