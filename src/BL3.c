@@ -92,6 +92,7 @@ int getBL3ptrs( void )
 //COL 2 + ROW 2 = SLEEP KEY
 int is_key_pressed(int col, int row)
 {
+   int i;
    KEYIFCOL = ((~(1 << col) & (0xFF)) << 8);
    for(i = 0; i < 10000; i++); //short delay
    if((~KEYIFROW >> row) & 1)
@@ -101,7 +102,6 @@ int is_key_pressed(int col, int row)
 
 runMode_t checkFBOOT( void )
 {
-   int i;
    if(is_key_pressed(2, 0)) //MENU
    	return rm_FOTA_RUN;
    return rm_BL3;
