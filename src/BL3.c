@@ -83,20 +83,28 @@ int getBL3ptrs( void )
    return 0;
 }
 
+//COL 0 + ROW 0 = HOME KEY
+//COL 0 + ROW 1 = CAM HALF KEY
+//COL 0 + ROW 2 = CAM FULL KEY
+//COL 1 + ROW 1 = VOLDOWN KEY
+//COL 1 + ROW 2 = VOLUP KEY
+//COL 2 + ROW 0 = CALL KEY
+//COL 2 + ROW 2 = SLEEP KEY
+int is_key_pressed(int col, int row)
+{
+   KEYIFCOL = ((~(1 << col) & (0xFF)) << 8);
+   for(i = 0; i < 10000; i++); //short delay
+   if((~KEYIFROW >> row) & 1)
+	   return 1;
+   return 0;	
+}
+
 runMode_t checkFBOOT( void )
 {
-	int i;
-   KEYIFCOL = ((~(1 << 2) & (0xFF)) << 8); //COL 2
-   for(i = 0; i < 10000; i++); //short delay
-   if((1 << 0) & (KEYIFROW & 0xFF)) //COL 2 & ROW 0 - menu key, if its high its not pressed
-	   return rm_BL3;
-   return rm_FOTA_RUN;
-   //COL 0 + ROW 0 = HOME KEY
-   //COL 0 + ROW 1 = CAM HALF KEY
-   //COL 0 + ROW 2 = CAM FULL KEY
-   //COL 1 + ROW 0 = CALL KEY
-   //COL 1 + ROW 1 = VOLDOWN KEY
-   //COL 1 + ROW 2 = VOLUP KEY
+   int i;
+   if(is_key_pressed(2, 0)) //MENU
+   	return rm_FOTA_RUN;
+   return rm_BL3;
 }
 
 void BL3_Shadowing( void )
