@@ -13,6 +13,8 @@ unsigned long c_tfs4_close[] = { 0x0f926882, 0 };
 unsigned long c_MemoryCardMount[] = { 0x555c5307, 0 };
 unsigned long c_DRV_Modem_BootingStart[] = { 0xf5a200e1, 0 };
 unsigned long c_disp_Normal_Init[] = { 0xa5f01bd4, 0 };
+unsigned long c_Flash_Read_Data[] = { 0x7dc705fa, 0 };
+unsigned long c_disp_First_Image[] = {0x49bcf18e,0};
 
 unsigned long *fun_crc[i_endMarker] = {c_MemMMUCacheEnable,
                                        c_disp_FOTA_Init,
@@ -27,4 +29,6 @@ unsigned long *fun_crc[i_endMarker] = {c_MemMMUCacheEnable,
                                        c_MemoryCardMount,
                                        c_DRV_Modem_BootingStart,
                                        c_disp_Normal_Init,
+                                       c_Flash_Read_Data,
+                                       c_disp_First_Image,
                                                                  };

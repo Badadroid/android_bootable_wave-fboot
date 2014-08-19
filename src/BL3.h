@@ -49,6 +49,8 @@ enum {
    i_MemoryCardMount,
    i_DRV_Modem_BootingStart,
    i_disp_Normal_Init,
+   i_Flash_Read_Data,
+   i_disp_First_Image,
 
    //do not add below this line
    i_endMarker
@@ -59,7 +61,7 @@ extern unsigned long *fun_crc[i_endMarker];
 extern unsigned char gMMUL1PageTable[0x4000];
 
 unsigned char BL3_DRAM_START;
-unsigned char KERNEL_BUF;
+unsigned char KERNEL_ONENAND;
 unsigned char KERNEL_START;
 unsigned char ATAG_MODEL;
 extern fun_t kernel;
@@ -79,6 +81,8 @@ extern unsigned char* RAW_BL3;
 #define MemoryCardMount             ptr_table[i_MemoryCardMount]
 #define DRV_Modem_BootingStart      ptr_table[i_DRV_Modem_BootingStart]
 #define disp_Normal_Init            ptr_table[i_disp_Normal_Init]
+#define Flash_Read_Data             ptr_table[i_Flash_Read_Data]
+#define disp_First_Image            ptr_table[i_disp_First_Image]
 
 #define KEY_CALL 2
 #define KEY_CAM1 3
