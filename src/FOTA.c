@@ -30,7 +30,7 @@ int main(runMode_t mode)
 
    unsigned char ATAG_buf[512]={0};
    fun_t kernel;
-   unsigned long kernelSize=10*1024*1024;
+   unsigned long kernelSize=7*1024*1024; // size of boot mtd partition
 
    //show bada splash
    disp_First_Image();
